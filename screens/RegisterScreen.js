@@ -48,126 +48,130 @@ export default function RegisterScreen({ navigation }) {
             </TouchableOpacity>
           </View>
 
-          <View style={styles.logoContainer}>
-            <View style={styles.checkmarkCircle}>
-              <Ionicons name="checkmark" size={24} color="#FFFFFF" />
-            </View>
-          </View>
-
-          <Text style={styles.title}>Create Your Vault</Text>
-          <Text style={styles.subtitle}>
-            Experience minimal luxury in asset management.
-          </Text>
-
-          <View style={styles.form}>
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>FULL NAME</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Johnathan Doe"
-                  placeholderTextColor="#9CA3AF"
-                  value={fullName}
-                  onChangeText={setFullName}
-                  autoCapitalize="words"
-                />
-                <Ionicons name="person-outline" size={20} color="#9CA3AF" />
+          <View style={styles.contentWrap}>
+            <View style={styles.logoContainer}>
+              <View style={styles.checkmarkCircle}>
+                <Ionicons name="shield-checkmark" size={21} color="#064F9E" />
               </View>
             </View>
 
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="name@pafms.com"
-                  placeholderTextColor="#9CA3AF"
-                  value={email}
-                  onChangeText={setEmail}
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                />
-                <MaterialCommunityIcons name="at" size={20} color="#9CA3AF" />
-              </View>
-            </View>
-
-            <View style={styles.inputGroup}>
-              <Text style={styles.inputLabel}>SECURE PASSWORD</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                  placeholder="Password"
-                  placeholderTextColor="#9CA3AF"
-                  value={password}
-                  onChangeText={setPassword}
-                  secureTextEntry={!showPassword}
-                />
-                <TouchableOpacity
-                  activeOpacity={0.8}
-                  onPress={() => setShowPassword((visible) => !visible)}
-                >
-                  <Ionicons
-                    name={showPassword ? "eye-off-outline" : "lock-closed-outline"}
-                    size={20}
-                    color="#9CA3AF"
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-
-            {password.length > 0 && (
-              <View style={styles.strengthContainer}>
-                <Text style={styles.strengthLabel}>Security Strength</Text>
-                <View style={styles.strengthBarContainer}>
-                  <View
-                    style={[
-                      styles.strengthBar,
-                      { width: `${passwordStrength.strength * 100}%` },
-                    ]}
-                  />
-                </View>
-                <Text
-                  style={[
-                    styles.strengthText,
-                    passwordStrength.strength === 1 && styles.strengthOptimal,
-                  ]}
-                >
-                  {passwordStrength.label}
-                </Text>
-              </View>
-            )}
-
-            <TouchableOpacity activeOpacity={0.88} style={styles.createButton}>
-              <Text style={styles.createButtonText}>Create Account</Text>
-              <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
-            </TouchableOpacity>
-
-            <Text style={styles.termsText}>
-              By signing up, you agree to our{" "}
-              <Text style={styles.termsLink}>Terms of Service</Text> and{" "}
-              <Text style={styles.termsLink}>Privacy Policy</Text>.
+            <Text style={styles.title}>Create Your Vault</Text>
+            <Text style={styles.subtitle}>
+              Experience minimal luxury in asset management.
             </Text>
-          </View>
 
-          <View style={styles.divider}>
-            <View style={styles.dividerLine} />
-            <Text style={styles.dividerText}>OR CONTINUE WITH</Text>
-            <View style={styles.dividerLine} />
-          </View>
+            <View style={styles.formCard}>
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>FULL NAME</Text>
+                <View style={styles.inputContainer}>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Johnathan Doe"
+                    placeholderTextColor="#9CA3AF"
+                    value={fullName}
+                    onChangeText={setFullName}
+                    autoCapitalize="words"
+                  />
+                  <Ionicons name="person-outline" size={20} color="#9CA3AF" />
+                </View>
+              </View>
 
-          <TouchableOpacity activeOpacity={0.85} style={styles.googleButton}>
-            <View style={styles.googleIcon}>
-              <FontAwesome5 name="google" size={18} color="#4285F4" />
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>EMAIL ADDRESS</Text>
+                <View style={styles.inputContainer}>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="name@pafms.com"
+                    placeholderTextColor="#9CA3AF"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                  />
+                  <MaterialCommunityIcons name="at" size={20} color="#9CA3AF" />
+                </View>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.inputLabel}>SECURE PASSWORD</Text>
+                <View style={styles.inputContainer}>
+                  <TextInput
+                    style={styles.input}
+                    placeholder="............"
+                    placeholderTextColor="#9CA3AF"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={!showPassword}
+                  />
+                  <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={() => setShowPassword((visible) => !visible)}
+                  >
+                    <Ionicons
+                      name={
+                        showPassword ? "eye-off-outline" : "lock-closed-outline"
+                      }
+                      size={20}
+                      color="#9CA3AF"
+                    />
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <View style={styles.strengthContainer}>
+                <View style={styles.strengthHeader}>
+                  <Text style={styles.strengthLabel}>Security Strength</Text>
+                  <Text
+                    style={[
+                      styles.strengthText,
+                      passwordStrength.strength === 1 && styles.strengthOptimal,
+                    ]}
+                  >
+                    {password.length > 0 ? passwordStrength.label : "Optimal"}
+                  </Text>
+                </View>
+                <View style={styles.strengthBars}>
+                  {[0, 1, 2, 3].map((segment) => (
+                    <View key={segment} style={styles.strengthSegment} />
+                  ))}
+                </View>
+              </View>
+
+              <TouchableOpacity
+                activeOpacity={0.88}
+                style={styles.createButton}
+              >
+                <Text style={styles.createButtonText}>Create Account</Text>
+                <Ionicons name="arrow-forward" size={18} color="#FFFFFF" />
+              </TouchableOpacity>
+
+              <Text style={styles.termsText}>
+                By signing up, you agree to our{" "}
+                <Text style={styles.termsLink}>Terms of Service</Text> and{" "}
+                <Text style={styles.termsLink}>Privacy Policy</Text>.
+              </Text>
             </View>
-            <Text style={styles.googleButtonText}>Continue with Google</Text>
-          </TouchableOpacity>
 
-          <View style={styles.loginContainer}>
-            <Text style={styles.loginText}>Already have an account? </Text>
-            <TouchableOpacity activeOpacity={0.8}>
-              <Text style={styles.loginLink}>Log in</Text>
+            <View style={styles.divider}>
+              <View style={styles.dividerLine} />
+              <Text style={styles.dividerText}>OR CONTINUE WITH</Text>
+              <View style={styles.dividerLine} />
+            </View>
+
+            <TouchableOpacity activeOpacity={0.85} style={styles.googleButton}>
+              <View style={styles.googleIcon}>
+                <FontAwesome5 name="google" size={14} color="#4285F4" />
+              </View>
+              <Text style={styles.googleButtonText}>Continue with Google</Text>
             </TouchableOpacity>
+
+            <View style={styles.loginContainer}>
+              <Text style={styles.loginText}>Already have an account? </Text>
+              <TouchableOpacity activeOpacity={0.8}>
+                <Text style={styles.loginLink}>Log in</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -178,147 +182,192 @@ export default function RegisterScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F8FAFC",
+    backgroundColor: "#FFFFFF",
   },
   keyboardView: {
     flex: 1,
   },
   scrollContent: {
-    paddingHorizontal: 24,
-    paddingBottom: 40,
+    paddingHorizontal: 18,
+    paddingBottom: 42,
+    alignItems: "center",
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingTop: 16,
-    marginBottom: 24,
+    minHeight: 43,
+    marginHorizontal: -18,
+    paddingHorizontal: 18,
+    backgroundColor: "#F6F8FD",
+    marginBottom: 28,
+    alignSelf: "stretch",
+  },
+  contentWrap: {
+    width: "100%",
+    maxWidth: 360,
   },
   headerLogo: {
-    color: "#0A1628",
-    fontSize: 18,
-    fontWeight: "700",
-    letterSpacing: 2,
+    color: "#0054A6",
+    fontFamily: "Inter_800ExtraBold",
+    fontSize: 14,
+    fontWeight: "800",
+    letterSpacing: 0,
   },
   skipText: {
-    color: "#6B7B8C",
-    fontSize: 14,
+    color: "#202124",
+    fontFamily: "Inter_400Regular",
+    fontSize: 9,
+    fontWeight: "400",
   },
   logoContainer: {
     alignItems: "center",
     marginBottom: 20,
   },
   checkmarkCircle: {
-    width: 48,
-    height: 48,
+    width: 40,
+    height: 40,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#2196F3",
-    borderRadius: 24,
+    backgroundColor: "#F5F8FE",
+    borderRadius: 20,
   },
   title: {
-    color: "#0A1628",
-    fontSize: 26,
-    fontWeight: "700",
+    color: "#202124",
+    fontFamily: "Inter_800ExtraBold",
+    fontSize: 22,
+    fontWeight: "800",
     textAlign: "center",
-    marginBottom: 8,
+    marginBottom: 9,
   },
   subtitle: {
-    color: "#6B7B8C",
-    fontSize: 14,
+    color: "#4F5B67",
+    fontFamily: "Inter_400Regular",
+    fontSize: 12,
     textAlign: "center",
-    marginBottom: 32,
+    marginBottom: 25,
   },
-  form: {
+  formCard: {
+    width: "100%",
+    backgroundColor: "#FFFFFF",
+    borderColor: "#EFF3F8",
+    borderRadius: 8,
+    borderWidth: 1,
+    paddingHorizontal: 17,
+    paddingTop: 18,
+    paddingBottom: 28,
     marginBottom: 24,
+    shadowColor: "#9CA3AF",
+    shadowOffset: { width: 0, height: 18 },
+    shadowOpacity: 0.18,
+    shadowRadius: 25,
+    elevation: 10,
   },
   inputGroup: {
-    marginBottom: 20,
+    marginBottom: 17,
   },
   inputLabel: {
-    color: "#6B7B8C",
-    fontSize: 10,
-    fontWeight: "600",
-    letterSpacing: 1,
-    marginBottom: 8,
+    color: "#202124",
+    fontFamily: "Inter_700Bold",
+    fontSize: 8,
+    fontWeight: "700",
+    letterSpacing: 1.4,
+    marginBottom: 9,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
-    borderColor: "#E5E7EB",
-    borderRadius: 12,
-    borderWidth: 1,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
+    backgroundColor: "#F4F8FF",
+    borderRadius: 5,
+    minHeight: 39,
+    paddingHorizontal: 13,
   },
   input: {
     flex: 1,
-    color: "#0A1628",
-    fontSize: 15,
+    color: "#202124",
+    fontFamily: "Inter_400Regular",
+    fontSize: 12,
     padding: 0,
   },
   strengthContainer: {
+    marginTop: -5,
+    marginBottom: 18,
+  },
+  strengthHeader: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 24,
-    marginTop: -8,
+    justifyContent: "space-between",
+    marginBottom: 6,
   },
   strengthLabel: {
-    color: "#6B7B8C",
-    fontSize: 12,
-    marginRight: 12,
+    color: "#516171",
+    fontFamily: "Inter_500Medium",
+    fontSize: 9,
+    fontWeight: "500",
   },
-  strengthBarContainer: {
+  strengthBars: {
+    flexDirection: "row",
+    gap: 4,
+  },
+  strengthSegment: {
     flex: 1,
-    height: 4,
-    backgroundColor: "#E5E7EB",
-    borderRadius: 2,
-    marginRight: 12,
-    overflow: "hidden",
-  },
-  strengthBar: {
-    height: "100%",
-    backgroundColor: "#2196F3",
+    height: 3,
+    backgroundColor: "#00769A",
     borderRadius: 2,
   },
   strengthText: {
-    color: "#6B7B8C",
-    fontSize: 12,
+    color: "#00769A",
+    fontFamily: "Inter_700Bold",
+    fontSize: 9,
+    fontWeight: "700",
   },
   strengthOptimal: {
-    color: "#2196F3",
-    fontWeight: "600",
+    color: "#00769A",
+    fontWeight: "700",
   },
   createButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 8,
-    backgroundColor: "#0A1628",
-    borderRadius: 12,
-    paddingVertical: 16,
-    marginBottom: 16,
+    gap: 6,
+    backgroundColor: "#0059B8",
+    borderRadius: 5,
+    minHeight: 40,
+    paddingVertical: 11,
+    marginBottom: 18,
+    shadowColor: "#0059B8",
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.26,
+    shadowRadius: 13,
+    elevation: 7,
   },
   createButtonText: {
     color: "#FFFFFF",
-    fontSize: 15,
-    fontWeight: "600",
+    fontFamily: "Inter_800ExtraBold",
+    fontSize: 11,
+    fontWeight: "800",
   },
   termsText: {
-    color: "#6B7B8C",
-    fontSize: 12,
-    lineHeight: 18,
+    color: "#334155",
+    fontFamily: "Inter_400Regular",
+    fontSize: 8.5,
+    lineHeight: 14,
     textAlign: "center",
+    paddingHorizontal: 7,
   },
   termsLink: {
-    color: "#2196F3",
-    fontWeight: "500",
+    color: "#0059B8",
+    fontFamily: "Inter_800ExtraBold",
+    fontWeight: "800",
   },
   divider: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 24,
+    alignSelf: "center",
+    width: "56%",
+    maxWidth: 180,
+    minWidth: 148,
+    marginBottom: 12,
   },
   dividerLine: {
     flex: 1,
@@ -326,35 +375,39 @@ const styles = StyleSheet.create({
     backgroundColor: "#E5E7EB",
   },
   dividerText: {
-    color: "#9CA3AF",
-    fontSize: 10,
+    color: "#7C8794",
+    fontFamily: "Inter_500Medium",
+    fontSize: 8,
     letterSpacing: 1,
-    marginHorizontal: 16,
+    marginHorizontal: 9,
   },
   googleButton: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    gap: 12,
+    alignSelf: "center",
+    gap: 8,
     backgroundColor: "#FFFFFF",
-    borderColor: "#DADCE0",
+    borderColor: "#C9D0DA",
     borderRadius: 4,
     borderWidth: 1,
-    minHeight: 48,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 24,
+    minHeight: 32,
+    minWidth: "29%",
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    marginBottom: 28,
   },
   googleIcon: {
-    width: 24,
-    height: 24,
+    width: 16,
+    height: 16,
     alignItems: "center",
     justifyContent: "center",
   },
   googleButtonText: {
-    color: "#3C4043",
-    fontSize: 14,
-    fontWeight: "600",
+    color: "#202124",
+    fontFamily: "Inter_500Medium",
+    fontSize: 9,
+    fontWeight: "500",
   },
   loginContainer: {
     flexDirection: "row",
@@ -362,13 +415,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   loginText: {
-    color: "#6B7B8C",
-    fontSize: 14,
+    color: "#5F6B78",
+    fontFamily: "Inter_400Regular",
+    fontSize: 10,
   },
   loginLink: {
-    color: "#0A1628",
-    fontSize: 14,
-    fontWeight: "600",
-    textDecorationLine: "underline",
+    color: "#0059B8",
+    fontFamily: "Inter_500Medium",
+    fontSize: 10,
+    fontWeight: "500",
   },
 });

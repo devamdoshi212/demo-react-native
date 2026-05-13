@@ -1,20 +1,33 @@
 {
   "expo": {
-    "name": "demo-react-native",
+    "name": "PAFMS",
     "slug": "demo-react-native",
     "version": "1.0.0",
     "runtimeVersion": {
       "policy": "appVersion"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "splash": {
+      "backgroundColor": "#0A1628",
+      "resizeMode": "contain"
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "com.pafms.app",
       "adaptiveIcon": {
         "backgroundColor": "#0A1628"
       }
     },
-    "web": {}
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "a5e3bbaa-9255-41a4-a818-6bf0acdd667e"
+      }
+    },
+    "owner": "avcthehero"
   }
 }
